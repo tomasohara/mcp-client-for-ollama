@@ -34,6 +34,7 @@ jobs:
     name: Test with Python ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     strategy:
+      # TODO: run MacOS and Windows based on commit hints (e.g., non-trivial)
       os: [ubuntu-24.04 macos-18 windows-12]
       fail-fast: false
       matrix:
