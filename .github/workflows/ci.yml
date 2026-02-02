@@ -4,7 +4,7 @@ permissions:
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, devel ]
     paths-ignore:
       - '**/*.md'
       - '**/*.jpg'
@@ -16,7 +16,7 @@ on:
       - '.gitignore'
       - '.python-version'
   pull_request:
-    branches: [ main ]
+    branches: [ main, devel ]
     paths-ignore:
       - '**/*.md'
       - '**/*.jpg'
