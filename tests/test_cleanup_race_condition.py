@@ -4,6 +4,7 @@ This test suite verifies that the client can gracefully handle cleanup
 even when MCP servers send notifications during the shutdown process.
 """
 
+import os
 import sys
 import unittest
 import asyncio
