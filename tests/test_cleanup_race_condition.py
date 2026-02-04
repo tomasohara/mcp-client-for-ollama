@@ -12,16 +12,12 @@ from contextlib import AsyncExitStack
 from mcp_client_for_ollama.client import MCPClient
 import pytest
 
-## TEMP:
-import sys
-sys.stderr.write(f"{os.name=} {os.getenv('CI')=}\n")
-
-
+@pytest.mark.skipif(os.name == 'nt' and os.getenv('CI') == 'true',
+                    # TODO: work via client = MCPClient(interactive=False)
+                    reason="No interactive console in Windows GitHub Actions")
 class TestCleanupRaceCondition(unittest.IsolatedAsyncioTestCase):
     """Test suite for stdio server cleanup race conditions."""
 
-    @pytest.mark.skipif(os.name == 'nt' and os.getenv('CI') == 'true',
-                        reason="No interactive console in Windows GitHub Actions")
     async def test_cleanup_handles_broken_resource_error(self):
         """Test that cleanup gracefully handles BrokenResourceError during exit."""
         # Note: This fails under Windows-12 via Github Actions:
