@@ -13,8 +13,9 @@ from mcp_client_for_ollama.client import MCPClient
 import pytest
 
 ## TEMP:
-from mezcla import debug
-debug.trace_expr(1, os.name, os.getenv('CI'))
+import sys
+sys.stderr.write(f"{os.name=} {os.getenv('CI')=}\n")
+
 
 class TestCleanupRaceCondition(unittest.IsolatedAsyncioTestCase):
     """Test suite for stdio server cleanup race conditions."""
